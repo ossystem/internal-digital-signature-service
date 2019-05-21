@@ -27,7 +27,7 @@ const applyTo = app => {
       .status(status)
       .set('Content-Type', 'application/json;charset=utf-8')
       .send({
-        status: false,
+        success: false,
         message: HTTP_ERRORS[status]
       });
   });

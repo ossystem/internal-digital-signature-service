@@ -8,6 +8,7 @@ const {
   PROTOCOL = HTTP,
   HOST = '0.0.0.0',
   PORT = 3000,
+  SSL_PORT = 443,
   RATE_LIMIT_MAX = 10,
   RATE_LIMIT_WINDOW = 1,
   RATE_LIMIT_BLOCK_DURATION = 60 * 60 * 24,
@@ -19,7 +20,8 @@ module.exports = {
   server: {
     protocol: PROTOCOL,
     host: HOST,
-    port: PORT
+    port: PORT,
+    sslPort: SSL_PORT
   },
   middlewares: {
     rateLimit: {  // https://www.npmjs.com/package/rate-limiter-flexible
