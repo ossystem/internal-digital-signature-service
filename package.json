@@ -16,7 +16,10 @@
     "express": "^4.17.0",
     "express-request-id": "^1.4.1",
     "express-sanitizer": "^1.0.5",
+    "gost89": "^0.1.11",
     "helmet": "^3.18.0",
+    "jksreader": "^1.0.0",
+    "jkurwa": "^1.1.0",
     "morgan": "^1.9.1",
     "rate-limiter-flexible": "^1.0.1"
   },

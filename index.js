@@ -33,3 +33,6 @@ routes.applyTo(app);
 
 // Initializing signals' handlers for run server
 errorHandlers.applyTo(createServer(app), pid);
+
+// Initializing additional required logic
+require('./lib/additionalInit');

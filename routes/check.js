@@ -1,6 +1,6 @@
 module.exports = app => {
   app.get('/', (req, res) => {
-    res.json({
+    return res.json({
       success: true
     })
   });
