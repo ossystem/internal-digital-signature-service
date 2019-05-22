@@ -12,7 +12,8 @@ const {
   RATE_LIMIT_MAX = 10,
   RATE_LIMIT_WINDOW = 1,
   RATE_LIMIT_BLOCK_DURATION = 60 * 60 * 24,
-  CORS_ENABLED = true
+  CORS_ENABLED = true,
+  KEY_PASSWORD
 } = process.env;
 
 module.exports = {
@@ -54,5 +55,6 @@ module.exports = {
         'X-Requested-With'
       ]
     }
-  }
+  },
+  keyPassword: KEY_PASSWORD
 };

@@ -4,3 +4,5 @@
 .env
 *.log
 node_modules
+resources
+!resources/.gitkeep
