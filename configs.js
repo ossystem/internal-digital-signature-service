@@ -13,7 +13,10 @@ const {
   RATE_LIMIT_WINDOW = 1,
   RATE_LIMIT_BLOCK_DURATION = 60 * 60 * 24,
   CORS_ENABLED = true,
-  KEY_PASSWORD
+  KEY_FILE_NAME = 'key.dat',
+  KEY_PASSWORD,
+  CERTIFICATE_FILE_NAME = 'certificate.cer',
+  SIGNED_DATA_FILE_NAME = 'signedData.p7s'
 } = process.env;
 
 module.exports = {
@@ -56,5 +59,10 @@ module.exports = {
       ]
     }
   },
-  keyPassword: KEY_PASSWORD
+  signingSettings: {
+    keyFileName: KEY_FILE_NAME,
+    keyPassword: KEY_PASSWORD,
+    certificateFileName: CERTIFICATE_FILE_NAME,
+    signedDataFileName: SIGNED_DATA_FILE_NAME
+  }
 };
