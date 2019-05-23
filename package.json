@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "debug": "nodemon ./index.js",
-    "start": "node ./index.js"
+    "start": "node ./index.js",
+    "docker/build": "docker build -t dss .",
+    "docker/run": "docker run -id --env-file=.env --name dss -p 3100:3000 dss"
   },
+  "private": true,
   "author": "Vitalii Marushko <v.marushko.ossystem@gmail.com>",
   "license": "ISC",
   "dependencies": {

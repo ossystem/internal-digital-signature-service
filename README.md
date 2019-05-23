@@ -1,11 +1,11 @@
 ## Deployment
-1\. Create in `root` folder `.env` file and set next required parameter: 
+1\. Create in `root` folder `.env` file and set next required parameters: 
 ```
+NODE_ENV=...                    # [required] dev|prod
 KEY_PASSWORD=...                # [required] password from private key file
 ```
 Also you can set another environment variables:
 ```
-NODE_ENV=...                    # dev|prod; default: prod
 PROTOCOL=...                    # http|https; default: http
 HOST=...                        # IP address of server host; default: 0.0.0.0
 PORT=...                        # port number where you want to start server; default: 3000
@@ -29,6 +29,21 @@ npm run start
 Also, there is another command exists for starting watcher of server code changes:
 ```
 npm run debug
+``` 
+
+## Docker mode
+1\. Do the 1st and 2nd steps from `Deployment` section (see above).
+
+2\. Run from `root` folder:
+```
+sudo docker build -t dss .
+sudo docker run -id --env-file=.env --name dss -p 3100:3000 dss
+```
+Also you can use `npm` command for this purposes. See `{root}/package.json` for details. 
+
+3\. Now you can call server from docker container with:
+```
+curl http://localhost:3100 
 ``` 
 
 ## API description
