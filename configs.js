@@ -1,6 +1,8 @@
 const {
   ENVIRONMENT: {DEV, PROD},
-  PROTOCOL: {HTTP}
+  PROTOCOL: {HTTP},
+  ARE_CORS_ENABLED,
+  NEED_TO_WRITE_INTO_FILE
 } = require('./lib/constants');
 
 const {
@@ -12,7 +14,8 @@ const {
   RATE_LIMIT_MAX = 10,
   RATE_LIMIT_WINDOW = 1,
   RATE_LIMIT_BLOCK_DURATION = 60 * 60 * 24,
-  CORS_ENABLED = true,
+  CORS_ENABLED = ARE_CORS_ENABLED.YES,
+  WRITE_INTO_FILE = NEED_TO_WRITE_INTO_FILE.NO,
   KEY_FILE_NAME = 'key.dat',
   KEY_PASSWORD,
   CERTIFICATE_FILE_NAME = 'certificate.cer',
@@ -34,17 +37,12 @@ module.exports = {
       blockDuration: RATE_LIMIT_BLOCK_DURATION  // seconds
     },
     bodyParser: {  // https://www.npmjs.com/package/body-parser
-      json: {
+      text: {
         limit: '256kb'
-      },
-      urlencoded: {
-        limit: '256kb',
-        parameterLimit: 1,
-        extended: false
       }
     },
     corsConfigs: {  // https://www.npmjs.com/package/cors
-      enabled: CORS_ENABLED,
+      enabled: CORS_ENABLED.toString() === ARE_CORS_ENABLED.YES.toString(),
       allowedOrigin: '*',
       allowedMethods: [
         'GET',
@@ -60,6 +58,7 @@ module.exports = {
     }
   },
   signingSettings: {
+    writeIntoFile: WRITE_INTO_FILE.toString() === NEED_TO_WRITE_INTO_FILE.YES.toString(),
     keyFileName: KEY_FILE_NAME,
     keyPassword: KEY_PASSWORD,
     certificateFileName: CERTIFICATE_FILE_NAME,

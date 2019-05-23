@@ -6,6 +6,7 @@ const getStamp = require('../lib/getStamp');
 const getCertAndPriv = require('../lib/getCertAndPriv');
 const {
   signingSettings: {
+    writeIntoFile,
     keyFileName,
     keyPassword,
     certificateFileName,
@@ -16,13 +17,12 @@ const {
 module.exports = app => {
   app.post('/sign', async (req, res, next) => {
     const body = req.body || {};
-    let jsonBody;
+    let stringifiedBody;
 
-    // Important checking body if it's JSON or not
     try {
-      jsonBody = JSON.stringify(body);
+      stringifiedBody = new String(body).valueOf();
     } catch (ex) {
-      console.error('Invalid request body. Should be JSON');
+      console.error('Invalid request body');
       return next({
         status: 400
       });
@@ -47,7 +47,7 @@ module.exports = app => {
 
     const algo = gost89.compat.algos();
     const {cert, priv} = getCertAndPriv(keyPath, keyPassword, certificatePath, algo);
-    const data = Buffer.from(jsonBody);
+    const data = Buffer.from(stringifiedBody);
     const dataHash = algo.hash(data);
     const tspB = await getStamp(cert, dataHash);
 
@@ -88,8 +88,9 @@ module.exports = app => {
       const fileContent = msg.as_asn1();
       signedData = fileContent.toString('base64');
 
-      // Notice: Uncomment next line, if you need to store content into file
-      // fs.writeFileSync(path.join(resourcesFolder, signedDataFileName), fileContent);
+      if (writeIntoFile) {
+        fs.writeFileSync(path.join(resourcesFolder, signedDataFileName), fileContent);
+      }
     } catch (ex) {
       console.error(ex.message || ex);
       return next({

@@ -14,6 +14,7 @@ RATE_LIMIT_MAX=...              # how much request a host can send before blocki
 RATE_LIMIT_WINDOW=...           # which period of time some host can request our server using RATE_LIMIT_MAX; default: 1 (second)
 RATE_LIMIT_BLOCK_DURATION=...   # how long some host will be blocked if it exceeds the requests limit; default: 86400 (seconds)
 CORS_ENABLED=...                # true|false; if you want to activate special CORS rules from {root}/configs.js; default: true
+WRITE_INTO_FILE=...             # true|false; if you need to store signed data into file; default: false
 KEY_FILE_NAME=...               # name of private key file, which you will put to root/resources; default: key.dat
 CERTIFICATE_FILE_NAME=...       # name of certificate file, which you will put to root/resources; default: certificate.cer
 SIGNED_DATA_FILE_NAME=...       # name of generated EDS file, which you will get in root/resources; default: signedData.p7s 
@@ -69,14 +70,9 @@ This route should work **always**!
 ```
 route:      /sign
 method:     POST
-headers:
-- Content-Type: application/json
-body: 
-{
-    "Command": "Objects"
-}
+body:       ...
 ```
-Inside `body` you must send any JSON-structured data, which you want to sign.
+Inside `body` you can send any string data, which you want to sign.
 
 ##### Response:
 ```
