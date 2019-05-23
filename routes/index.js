@@ -23,7 +23,7 @@ const applyTo = app => {
 
     const status = err.status || 500;
 
-    res
+    return res
       .status(status)
       .json({
         success: false,

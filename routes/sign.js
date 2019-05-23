@@ -82,14 +82,24 @@ module.exports = app => {
       }
     }
 
-    const fileContent = msg.as_asn1();
+    let signedData;
 
-    // Notice: Uncomment next line, if you need to store content into file
-    fs.writeFileSync(path.join(resourcesFolder, signedDataFileName), fileContent);
+    try {
+      const fileContent = msg.as_asn1();
+      signedData = fileContent.toString('base64');
+
+      // Notice: Uncomment next line, if you need to store content into file
+      // fs.writeFileSync(path.join(resourcesFolder, signedDataFileName), fileContent);
+    } catch (ex) {
+      console.error(ex.message || ex);
+      return next({
+        status: 500
+      });
+    }
 
     return res.json({
       success: true,
-      data: fileContent.toString('base64')
+      data: signedData
     });
   });
 };
