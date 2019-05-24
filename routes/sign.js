@@ -16,7 +16,7 @@ const {
 
 module.exports = app => {
   app.post('/sign', async (req, res, next) => {
-    const body = req.body || {};
+    const body = req.body || '';
     let stringifiedBody;
 
     try {
