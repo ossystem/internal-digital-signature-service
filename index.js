@@ -8,12 +8,12 @@ const helmet = require('helmet');
 const sanitizer = require('express-sanitizer');
 const cookieParser = require('cookie-parser');
 const requestId = require('express-request-id');
-const rateLimiter = require('./lib/middleware_rateLimiter');
+const rateLimiter = require('./lib/middlewares/rateLimiter');
 const errorHandlers = require('./lib/errorHandlers');
 const createServer = require('./lib/createServer');
-const parseBodyAsText = require('./lib/middleware_parseBodyAsText');
+const parseBodyAsText = require('./lib/middlewares/parseBodyAsText');
 const routes = require('./routes');
-const {middlewares: {corsConfigs, bodyParser}} = require('./configs');
+const {middlewares: {corsConfigs}} = require('./configs');
 const pid = process.pid;
 const app = express();
 

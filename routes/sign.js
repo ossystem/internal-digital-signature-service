@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const gost89 = require('gost89');
 const {Message} = require('jkurwa/lib/models');
-const getStamp = require('../lib/getStamp');
-const getCertAndPriv = require('../lib/getCertAndPriv');
+const getStamp = require('../lib/operational/getStamp');
+const getCertAndPriv = require('../lib/operational/getCertAndPriv');
 const {
   signingSettings: {
     writeIntoFile,
