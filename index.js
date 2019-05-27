@@ -9,7 +9,7 @@ const sanitizer = require('express-sanitizer');
 const cookieParser = require('cookie-parser');
 const requestId = require('express-request-id');
 const rateLimiter = require('./lib/middlewares/rateLimiter');
-const errorHandlers = require('./lib/errorHandlers');
+const processHandlers = require('./lib/processHandlers');
 const createServer = require('./lib/createServer');
 const parseBodyAsText = require('./lib/middlewares/parseBodyAsText');
 const routes = require('./routes');
@@ -32,7 +32,7 @@ app.set('trust proxy', true);
 routes.applyTo(app);
 
 // Initializing signals' handlers for run server
-errorHandlers.applyTo(createServer(app), pid);
+processHandlers.applyTo(createServer(app), pid);
 
 // Initializing additional required logic
 require('./lib/additionalInit');

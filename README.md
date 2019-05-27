@@ -50,7 +50,7 @@ curl http://localhost:3100
 
 ## API description
 
-#### ➜ Checking server accessibility:
+### - Checking server accessibility:
 ##### Request:
 ```
 route:      /
@@ -66,7 +66,7 @@ body:
 ```
 This route should work **always**! 
 
-#### ➜ Sign data:
+### - Sign data:
 ##### Request:
 ```
 route:      /sign
@@ -84,9 +84,39 @@ body:
     "data": "..."
 }
 ```
-`data` parameter comes as encoded in `base64` signed data.
+`data` parameter comes as encoded `base64` signed data.
+
+### - Decrypt data:
+##### Request:
+```
+route:      /decrypt
+method:     POST
+body:       ...
+```
+Inside `body` you should send full response body from SFS, which is encoded `base64` string.
+
+##### Response:
+```
+status: 200 OK
+body:
+{
+    "success": true,
+    "data": "..."
+}
+```
+`data` parameter comes as encoded `base64` string. It's decrypted response from SFS.
+
 
 #### External responses if request wasn't processed successfully
+- If something happened on business logic, but it's not critical, and need to investigate server logs:
+```
+status: 200 OK
+body:
+{
+    "success": false
+}
+```
+
 - If sent data is not valid:
 ```
 status: 400 Bad Request
