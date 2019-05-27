@@ -2,7 +2,8 @@ const {
   ENVIRONMENT: {DEV, PROD},
   PROTOCOL: {HTTP},
   ARE_CORS_ENABLED,
-  NEED_TO_WRITE_INTO_FILE
+  NEED_TO_WRITE_INTO_FILE,
+  NEED_TO_ENABLE_REQUESTS_LOGGER
 } = require('./lib/constants');
 
 const {
@@ -16,6 +17,7 @@ const {
   RATE_LIMIT_BLOCK_DURATION = 60 * 60 * 24,
   CORS_ENABLED = ARE_CORS_ENABLED.YES,
   WRITE_INTO_FILE = NEED_TO_WRITE_INTO_FILE.NO,
+  REQUESTS_LOGGER_ENABLED = NEED_TO_ENABLE_REQUESTS_LOGGER.NO,
   KEY_FILE_NAME = 'key.dat',
   KEY_PASSWORD,
   CERTIFICATE_FILE_NAME = 'certificate.cer',
@@ -29,6 +31,7 @@ if (!NODE_ENV || ![DEV, PROD].includes(NODE_ENV)) {
 
 module.exports = {
   isDevelopment: NODE_ENV === DEV,
+  requestsLoggerEnabled: REQUESTS_LOGGER_ENABLED.toString() === NEED_TO_ENABLE_REQUESTS_LOGGER.YES.toString(),
   server: {
     protocol: PROTOCOL,
     host: HOST,

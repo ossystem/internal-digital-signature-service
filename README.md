@@ -5,6 +5,8 @@ KEY_PASSWORD=...                # [required] password from private key file
 ```
 Also you can set another environment variables:
 ```
+DEBUG=app                       # turn on service logs into console; disabled by default
+REQUESTS_LOGGER_ENABLED=...     # true|fals; turn on requests logger; default: false
 NODE_ENV=...                    # dev|prod; default: prod
 PROTOCOL=...                    # http|https; default: http
 HOST=...                        # IP address of server host; default: 0.0.0.0

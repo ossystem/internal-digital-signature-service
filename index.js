@@ -13,12 +13,21 @@ const processHandlers = require('./lib/processHandlers');
 const createServer = require('./lib/createServer');
 const parseBodyAsText = require('./lib/middlewares/parseBodyAsText');
 const routes = require('./routes');
-const {middlewares: {corsConfigs}} = require('./configs');
 const pid = process.pid;
 const app = express();
+const {
+  middlewares: {
+    corsConfigs
+  },
+  requestsLoggerEnabled
+} = require('./configs');
+
+// It needs to logging into console only if this option enabled via environment variables
+if (requestsLoggerEnabled) {
+  app.use(logger('common'));
+}
 
 // Applying all required middlewares
-app.use(logger('common'));
 app.use(rateLimiter);
 app.use(requestId());
 app.use(cors((corsConfigs && corsConfigs.enabled) ? corsConfigs : {}));
