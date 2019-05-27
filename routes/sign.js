@@ -85,11 +85,11 @@ module.exports = app => {
     let signedData;
 
     try {
-      const fileContent = msg.as_asn1();
-      signedData = fileContent.toString('base64');
+      const content = msg.as_asn1();
+      signedData = content.toString('base64');
 
       if (writeIntoFile) {
-        fs.writeFileSync(path.join(resourcesFolder, signedDataFileName), fileContent);
+        fs.writeFileSync(path.join(resourcesFolder, signedDataFileName), content);
       }
     } catch (ex) {
       console.error(ex.message || ex);

@@ -19,7 +19,8 @@ const {
   KEY_FILE_NAME = 'key.dat',
   KEY_PASSWORD,
   CERTIFICATE_FILE_NAME = 'certificate.cer',
-  SIGNED_DATA_FILE_NAME = 'signedData.p7s'
+  SIGNED_DATA_FILE_NAME = 'signedData.p7s',
+  PARSED_DATA_FILE_NAME = 'decrypted.txt'
 } = process.env;
 
 module.exports = {
@@ -62,6 +63,7 @@ module.exports = {
     keyFileName: KEY_FILE_NAME,
     keyPassword: KEY_PASSWORD,
     certificateFileName: CERTIFICATE_FILE_NAME,
-    signedDataFileName: SIGNED_DATA_FILE_NAME
+    signedDataFileName: SIGNED_DATA_FILE_NAME,
+    parsedDataFileName: PARSED_DATA_FILE_NAME
   }
 };
