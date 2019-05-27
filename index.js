@@ -18,7 +18,7 @@ const pid = process.pid;
 const app = express();
 
 // Applying all required middlewares
-app.use(logger('combined'));
+app.use(logger('common'));
 app.use(rateLimiter);
 app.use(requestId());
 app.use(cors((corsConfigs && corsConfigs.enabled) ? corsConfigs : {}));

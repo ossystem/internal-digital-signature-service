@@ -23,6 +23,10 @@ const {
   PARSED_DATA_FILE_NAME = 'decrypted.txt'
 } = process.env;
 
+if (!NODE_ENV || ![DEV, PROD].includes(NODE_ENV)) {
+  process.env.NODE_ENV = PROD;
+}
+
 module.exports = {
   isDevelopment: NODE_ENV === DEV,
   server: {

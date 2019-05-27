@@ -3,6 +3,7 @@ const path = require('path');
 const encoding = require('encoding');
 const getUnwrapped = require('../lib/operational/getUnwrapped');
 const processUnwrapped = require('../lib/operational/processUnwrapped');
+const log = require('../lib/log');
 const {
   signingSettings: {
     writeIntoFile,
@@ -19,7 +20,7 @@ module.exports = app => {
     try {
       stringifiedBody = Buffer.from(body, 'base64');
     } catch (ex) {
-      console.error('Invalid request body');
+      log.exception(__line, __filename, 'Invalid request body');
       return next({
         status: 400
       });

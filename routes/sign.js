@@ -4,6 +4,7 @@ const gost89 = require('gost89');
 const {Message} = require('jkurwa/lib/models');
 const getStamp = require('../lib/operational/getStamp');
 const getCertAndPriv = require('../lib/operational/getCertAndPriv');
+const log = require('../lib/log');
 const {
   signingSettings: {
     writeIntoFile,
@@ -22,7 +23,7 @@ module.exports = app => {
     try {
       stringifiedBody = new String(body).valueOf();
     } catch (ex) {
-      console.error('Invalid request body');
+      log.exception(__line, __filename, 'Invalid request body');
       return next({
         status: 400
       });
@@ -37,9 +38,9 @@ module.exports = app => {
     // Key and certificate files should be placed in 'resources' folder
     // and KEY_PASSWORD parameter should be set as environment variable
     if (!keyFileExists || !keyPassword || !certificateFileExists) {
-      console.error(`Key file exists: ${keyFileExists}`);
-      console.error(`Password exists: ${!!keyPassword}`);
-      console.error(`Certificate file exists: ${certificateFileExists}`);
+      log.error(__line, __filename, `Key file exists: ${keyFileExists}`);
+      log.error(__line, __filename, `Password exists: ${!!keyPassword}`);
+      log.error(__line, __filename, `Certificate file exists: ${certificateFileExists}`);
       return next({
         status: 500
       });
@@ -52,7 +53,7 @@ module.exports = app => {
     const tspB = await getStamp(cert, dataHash);
 
     if (!cert || !priv) {
-      console.error(`Certificate and/or private key weren't processed correct`);
+      log.error(__line, __filename, `Certificate and/or private key weren't processed correct`);
       return next({
         status: 500
       });
@@ -72,10 +73,10 @@ module.exports = app => {
         signTime: null
       });
     } catch (ex) {
-      console.error(ex.message || ex);
+      log.exception(__line, __filename, ex.message || ex);
     } finally {
       if (!msg) {
-        console.error(`Signed message wasn't created`);
+        log.error(__line, __filename, `Signed message wasn't created`);
         return next({
           status: 500
         });
@@ -92,7 +93,7 @@ module.exports = app => {
         fs.writeFileSync(path.join(resourcesFolder, signedDataFileName), content);
       }
     } catch (ex) {
-      console.error(ex.message || ex);
+      log.exception(__line, __filename, ex.message || ex);
       return next({
         status: 500
       });

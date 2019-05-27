@@ -1,10 +1,11 @@
 const {readdirSync} = require('fs');
 const path = require('path');
 const {HTTP_ERRORS} = require('../lib/constants');
+const log = require('../lib/log');
 
 const applyTo = app => {
   if (!app || (app && (typeof app.use !== 'function'))) {
-    console.error(`Routes' handlers haven't been initialized.`);
+    log.critical(__line, __filename, `Routes' handlers haven't been initialized.`);
     return process.exit(1);
   }
 
@@ -19,7 +20,7 @@ const applyTo = app => {
   }));
 
   app.use((err, req, res, next) => {
-    console.error(err);
+    log.error(__line, __filename, err);
 
     const status = err.status || 500;
 

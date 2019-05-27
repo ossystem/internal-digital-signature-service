@@ -1,11 +1,11 @@
 ## Deployment
-1\. Create in `root` folder `.env` file and set next required parameters: 
+1\. Create in `root` folder `.env` file and set next required parameter: 
 ```
-NODE_ENV=...                    # [required] dev|prod
 KEY_PASSWORD=...                # [required] password from private key file
 ```
 Also you can set another environment variables:
 ```
+NODE_ENV=...                    # dev|prod; default: prod
 PROTOCOL=...                    # http|https; default: http
 HOST=...                        # IP address of server host; default: 0.0.0.0
 PORT=...                        # port number where you want to start server; default: 3000
@@ -107,7 +107,7 @@ body:
 `data` parameter comes as encoded `base64` string. It's decrypted response from SFS.
 
 
-#### External responses if request wasn't processed successfully
+### External responses if request wasn't processed successfully
 - If something happened on business logic, but it's not critical, and need to investigate server logs:
 ```
 status: 200 OK
