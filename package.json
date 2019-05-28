@@ -1,5 +1,5 @@
 {
-  "name": "digital-signature-service",
+  "name": "internal-digital-signature-service",
   "version": "1.0.0",
   "description": "Micro service for adding digital signature to some data",
   "main": "index.js",
