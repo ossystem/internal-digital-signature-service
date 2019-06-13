@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const gost89 = require('gost89');
+const encoding = require('encoding');
 const {Message} = require('jkurwa/lib/models');
 const getStamp = require('../lib/operational/getStamp');
 const getCertAndPriv = require('../lib/operational/getCertAndPriv');
@@ -28,6 +29,10 @@ module.exports = app => {
         status: 400
       });
     }
+
+    stringifiedBody = Buffer.from(stringifiedBody);
+    stringifiedBody = stringifiedBody.toString('utf-8');
+    stringifiedBody = encoding.convert(stringifiedBody, 'windows-1251', 'utf-8');
 
     const resourcesFolder = path.resolve(__dirname, '..', 'resources');
     const keyPath = path.join(resourcesFolder, keyFileName);

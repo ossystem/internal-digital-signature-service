@@ -51,6 +51,8 @@ curl http://localhost:3100
 ``` 
 
 ## API description
+###### Notice
+All content, that is sent via POST method in request body, should be sent in `UTF-8` encoding!
 
 ### - Checking server accessibility:
 ##### Request:

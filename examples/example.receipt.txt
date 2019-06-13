@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<CHECK xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="check01.xsd">
+    <CHECKHEAD>
+        <DOCTYPE>0</DOCTYPE>
+        <DOCSUBTYPE>0</DOCSUBTYPE>
+        <VER>1</VER>
+        <UID>75CE5D3E05B400A0E053C0A8016D7FEE</UID>
+        <TIN>1010101017</TIN>
+        <INN>123456789012</INN>
+        <ORGNAME>КIОСК</ORGNAME>
+        <POINTNAME>КIОСК</POINTNAME>
+        <POINTADDR>УКРАЇНА, ЧЕРНIВЕЦЬКА ОБЛАСТЬ, М.НОВОДНІСТРОВСЬК апр</POINTADDR>
+        <ORDERDATE>13062019</ORDERDATE>
+        <ORDERTIME>085700</ORDERTIME>
+        <ORDERNUM>2637</ORDERNUM>
+        <ORDERTAXNUM>101234567890123</ORDERTAXNUM>
+        <CASHDESKNUM>1</CASHDESKNUM>
+        <CASHREGISTERNUM>7000000322</CASHREGISTERNUM>
+        <CASHIER>Семко А.М.</CASHIER>
+    </CHECKHEAD>
+
+    <CHECKTOTAL>
+        <TOTALSUM>293.00</TOTALSUM>
+    </CHECKTOTAL>
+
+    <CHECKPAY>
+        <ROW ROWNUM="1">
+            <PAYMENTFORM>Наличные</PAYMENTFORM>
+            <SUM>213.00</SUM>
+        </ROW>
+    </CHECKPAY>
+
+    <CHECKTAX>
+        <ROW ROWNUM="1">
+            <TAXCODE>Ы</TAXCODE>
+            <TAXPRC>20.00</TAXPRC>
+            <TAXSUM>80.00</TAXSUM>
+        </ROW>
+    </CHECKTAX>
+
+    <CHECKBODY>
+        <ROW ROWNUM="1">
+            <CODE>QQQ</CODE>
+            <UKTZED>DDD</UKTZED>
+            <NAME>Название товара</NAME>
+            <UNITCODE>7</UNITCODE>
+            <UNITNAME>грн</UNITNAME>
+            <AMOUNT>4</AMOUNT>
+            <PRICE>19.00</PRICE>
+            <LETTER>A</LETTER>
+            <LETTEREXCISE>B</LETTEREXCISE>
+            <COST>76.00</COST>
+        </ROW>
+    </CHECKBODY>
+</CHECK>

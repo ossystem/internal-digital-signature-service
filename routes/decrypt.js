@@ -36,7 +36,7 @@ module.exports = app => {
 
     if (!isErr) {
       content = textInfo.content;
-      content = isWin ? encoding.convert(content, 'utf-8', 'cp1251') : content;
+      content = encoding.convert(content, 'utf-8', 'windows-1251');
 
       if (writeIntoFile) {
         fs.writeFileSync(path.join(resourcesFolder, parsedDataFileName), content);
