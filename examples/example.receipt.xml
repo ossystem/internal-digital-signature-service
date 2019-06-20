@@ -7,16 +7,16 @@
         <UID>75CE5D3E05B400A0E053C0A8016D7FEE</UID>
         <TIN>1010101017</TIN>
         <INN>123456789012</INN>
-        <ORGNAME>РљIРћРЎРљ</ORGNAME>
-        <POINTNAME>РљIРћРЎРљ</POINTNAME>
-        <POINTADDR>РЈРљР РђР‡РќРђ, Р§Р•Р РќIР’Р•Р¦Р¬РљРђ РћР‘Р›РђРЎРўР¬, Рњ.РќРћР’РћР”РќР†РЎРўР РћР’РЎР¬Рљ Р°РїСЂ</POINTADDR>
-        <ORDERDATE>13062019</ORDERDATE>
-        <ORDERTIME>085700</ORDERTIME>
-        <ORDERNUM>2637</ORDERNUM>
+        <ORGNAME>КIОСК</ORGNAME>
+        <POINTNAME>КIОСК</POINTNAME>
+        <POINTADDR>УКРАЇНА, ЧЕРНIВЕЦЬКА ОБЛАСТЬ, М.НОВОДНІСТРОВСЬК апр</POINTADDR>
+        <ORDERDATE>20062019</ORDERDATE>
+        <ORDERTIME>085300</ORDERTIME>
+        <ORDERNUM>2780</ORDERNUM>
         <ORDERTAXNUM>101234567890123</ORDERTAXNUM>
         <CASHDESKNUM>1</CASHDESKNUM>
         <CASHREGISTERNUM>7000000322</CASHREGISTERNUM>
-        <CASHIER>РЎРµРјРєРѕ Рђ.Рњ.</CASHIER>
+        <CASHIER>Семко А.М.</CASHIER>
     </CHECKHEAD>
 
     <CHECKTOTAL>
@@ -25,14 +25,14 @@
 
     <CHECKPAY>
         <ROW ROWNUM="1">
-            <PAYMENTFORM>РќР°Р»РёС‡РЅС‹Рµ</PAYMENTFORM>
+            <PAYMENTFORM>Наличные</PAYMENTFORM>
             <SUM>213.00</SUM>
         </ROW>
     </CHECKPAY>
 
     <CHECKTAX>
         <ROW ROWNUM="1">
-            <TAXCODE>Р«</TAXCODE>
+            <TAXCODE>A</TAXCODE>
             <TAXPRC>20.00</TAXPRC>
             <TAXSUM>80.00</TAXSUM>
         </ROW>
@@ -40,15 +40,15 @@
 
     <CHECKBODY>
         <ROW ROWNUM="1">
-            <CODE>QQQ</CODE>
-            <UKTZED>DDD</UKTZED>
-            <NAME>РќР°Р·РІР°РЅРёРµ С‚РѕРІР°СЂР°</NAME>
-            <UNITCODE>7</UNITCODE>
-            <UNITNAME>РіСЂРЅ</UNITNAME>
+            <CODE>98765</CODE>
+            <UKTZED>876543</UKTZED>
+            <NAME>ЇїіІІєЄ ь юЮя 00ъЪ И гГҐЄґ ((Название товара)) ІІ</NAME>
+            <UNITCODE>25</UNITCODE>
+            <UNITNAME>кг</UNITNAME>
             <AMOUNT>4</AMOUNT>
             <PRICE>19.00</PRICE>
             <LETTER>A</LETTER>
-            <LETTEREXCISE>B</LETTEREXCISE>
+            <LETTEREXCISE>A</LETTEREXCISE>
             <COST>76.00</COST>
         </ROW>
     </CHECKBODY>

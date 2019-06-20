@@ -18,22 +18,6 @@ const {
 
 module.exports = app => {
   app.post('/sign', async (req, res, next) => {
-    const body = req.body || '';
-    let stringifiedBody;
-
-    try {
-      stringifiedBody = new String(body).valueOf();
-    } catch (ex) {
-      log.exception(__line, __filename, 'Invalid request body');
-      return next({
-        status: 400
-      });
-    }
-
-    stringifiedBody = Buffer.from(stringifiedBody);
-    stringifiedBody = stringifiedBody.toString('utf-8');
-    stringifiedBody = encoding.convert(stringifiedBody, 'windows-1251', 'utf-8');
-
     const resourcesFolder = path.resolve(__dirname, '..', 'resources');
     const keyPath = path.join(resourcesFolder, keyFileName);
     const certificatePath = path.join(resourcesFolder, certificateFileName);
@@ -53,7 +37,7 @@ module.exports = app => {
 
     const algo = gost89.compat.algos();
     const {cert, priv} = getCertAndPriv(keyPath, keyPassword, certificatePath, algo);
-    const data = Buffer.from(stringifiedBody);
+    const data = req.bodyBuffer;
     const dataHash = algo.hash(data);
     const tspB = await getStamp(cert, dataHash);
 
