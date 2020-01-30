@@ -1,4 +1,4 @@
-FROM node:8.16 as node
+FROM node:12-alpine as node
 
 WORKDIR /var/www
 

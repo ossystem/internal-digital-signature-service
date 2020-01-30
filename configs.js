@@ -1,23 +1,13 @@
 const {
   ENVIRONMENT: {DEV, PROD},
-  PROTOCOL: {HTTP},
-  ARE_CORS_ENABLED,
   NEED_TO_WRITE_INTO_FILE,
-  NEED_TO_ENABLE_REQUESTS_LOGGER
 } = require('./lib/constants');
 
 const {
+  DEBUG = 'app',
   NODE_ENV = PROD,
-  PROTOCOL = HTTP,
-  HOST = '0.0.0.0',
-  PORT = 3000,
-  SSL_PORT = 443,
-  RATE_LIMIT_MAX = 10,
-  RATE_LIMIT_WINDOW = 1,
-  RATE_LIMIT_BLOCK_DURATION = 60 * 60 * 24,
-  CORS_ENABLED = ARE_CORS_ENABLED.YES,
+  PORT = '3000',
   WRITE_INTO_FILE = NEED_TO_WRITE_INTO_FILE.NO,
-  REQUESTS_LOGGER_ENABLED = NEED_TO_ENABLE_REQUESTS_LOGGER.NO,
   KEY_FILE_NAME = 'key.dat',
   KEY_PASSWORD,
   CERTIFICATE_FILE_NAME = 'certificate.cer',
@@ -29,20 +19,19 @@ if (!NODE_ENV || ![DEV, PROD].includes(NODE_ENV)) {
   process.env.NODE_ENV = PROD;
 }
 
+process.env.DEBUG = DEBUG;
+
 module.exports = {
   isDevelopment: NODE_ENV === DEV,
-  requestsLoggerEnabled: REQUESTS_LOGGER_ENABLED.toString() === NEED_TO_ENABLE_REQUESTS_LOGGER.YES.toString(),
   server: {
-    protocol: PROTOCOL,
-    host: HOST,
-    port: PORT,
-    sslPort: SSL_PORT
+    host: '0.0.0.0',
+    port: PORT
   },
   middlewares: {
     rateLimit: {  // https://www.npmjs.com/package/rate-limiter-flexible
-      points: RATE_LIMIT_MAX,
-      duration: RATE_LIMIT_WINDOW,  // seconds
-      blockDuration: RATE_LIMIT_BLOCK_DURATION  // seconds
+      points: 10,
+      duration: 1,  // seconds
+      blockDuration: 60 * 60 * 24  // seconds
     },
     bodyParser: {  // https://www.npmjs.com/package/body-parser
       text: {
@@ -50,7 +39,6 @@ module.exports = {
       }
     },
     corsConfigs: {  // https://www.npmjs.com/package/cors
-      enabled: CORS_ENABLED.toString() === ARE_CORS_ENABLED.YES.toString(),
       allowedOrigin: '*',
       allowedMethods: [
         'GET',

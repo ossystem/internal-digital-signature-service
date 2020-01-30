@@ -19,16 +19,10 @@ const {
   middlewares: {
     corsConfigs
   },
-  requestsLoggerEnabled
 } = require('./configs');
 
-// It needs to logging into console only if this option enabled via environment variables
-if (requestsLoggerEnabled) {
-  app.use(logger('common'));
-}
-
-// Applying all required middlewares
 app.use(rateLimiter);
+app.use(logger('common'));
 app.use(requestId());
 app.use(cors((corsConfigs && corsConfigs.enabled) ? corsConfigs : {}));
 app.use(parseBodyAsText);
